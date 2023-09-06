@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kaifamiao.music.mapper.MusicMapper">
+  <resultMap id="BaseResultMap" type="com.kaifamiao.music.domain.Music">
+    <!--@mbg.generated-->
+    <!--@Table music-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="old_name" jdbcType="VARCHAR" property="oldName" />
+    <result column="music_type" jdbcType="VARCHAR" property="musicType" />
+    <result column="upload_path" jdbcType="VARCHAR" property="uploadPath" />
+    <result column="new_name" jdbcType="VARCHAR" property="newName" />
+    <result column="music_suffix" jdbcType="VARCHAR" property="musicSuffix" />
+    <result column="music_size" jdbcType="BIGINT" property="musicSize" />
+    <result column="duration" jdbcType="VARCHAR" property="duration" />
+    <result column="is_heart" jdbcType="INTEGER" property="isHeart" />
+    <result column="artist" jdbcType="VARCHAR" property="artist" />
+    <result column="upload_time" jdbcType="TIMESTAMP" property="uploadTime" />
+    <result column="download_times" jdbcType="INTEGER" property="downloadTimes" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <collection property="user" column="user_id" select="com.kaifamiao.music.mapper.UserMapper.selectByPrimaryKey" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, old_name, music_type, upload_path, new_name, music_suffix, music_size, duration, 
+    is_heart, artist, upload_time, download_times, user_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from music
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from music
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.kaifamiao.music.domain.Music" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into music (old_name, music_type, upload_path, 
+      new_name, music_suffix, music_size, 
+      duration, is_heart, artist, 
+      upload_time, download_times, user_id
+      )
+    values (#{oldName,jdbcType=VARCHAR}, #{musicType,jdbcType=VARCHAR}, #{uploadPath,jdbcType=VARCHAR}, 
+      #{newName,jdbcType=VARCHAR}, #{musicSuffix,jdbcType=VARCHAR}, #{musicSize,jdbcType=BIGINT}, 
+      #{duration,jdbcType=VARCHAR}, #{isHeart,jdbcType=INTEGER}, #{artist,jdbcType=VARCHAR}, 
+      #{uploadTime,jdbcType=TIMESTAMP}, #{downloadTimes,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.kaifamiao.music.domain.Music" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into music
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oldName != null">
+        old_name,
+      </if>
+      <if test="musicType != null">
+        music_type,
+      </if>
+      <if test="uploadPath != null">
+        upload_path,
+      </if>
+      <if test="newName != null">
+        new_name,
+      </if>
+      <if test="musicSuffix != null">
+        music_suffix,
+      </if>
+      <if test="musicSize != null">
+        music_size,
+      </if>
+      <if test="duration != null">
+        duration,
+      </if>
+      <if test="isHeart != null">
+        is_heart,
+      </if>
+      <if test="artist != null">
+        artist,
+      </if>
+      <if test="uploadTime != null">
+        upload_time,
+      </if>
+      <if test="downloadTimes != null">
+        download_times,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oldName != null">
+        #{oldName,jdbcType=VARCHAR},
+      </if>
+      <if test="musicType != null">
+        #{musicType,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadPath != null">
+        #{uploadPath,jdbcType=VARCHAR},
+      </if>
+      <if test="newName != null">
+        #{newName,jdbcType=VARCHAR},
+      </if>
+      <if test="musicSuffix != null">
+        #{musicSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="musicSize != null">
+        #{musicSize,jdbcType=BIGINT},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=VARCHAR},
+      </if>
+      <if test="isHeart != null">
+        #{isHeart,jdbcType=INTEGER},
+      </if>
+      <if test="artist != null">
+        #{artist,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null">
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="downloadTimes != null">
+        #{downloadTimes,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.kaifamiao.music.domain.Music">
+    <!--@mbg.generated-->
+    update music
+    <set>
+      <if test="oldName != null">
+        old_name = #{oldName,jdbcType=VARCHAR},
+      </if>
+      <if test="musicType != null">
+        music_type = #{musicType,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadPath != null">
+        upload_path = #{uploadPath,jdbcType=VARCHAR},
+      </if>
+      <if test="newName != null">
+        new_name = #{newName,jdbcType=VARCHAR},
+      </if>
+      <if test="musicSuffix != null">
+        music_suffix = #{musicSuffix,jdbcType=VARCHAR},
+      </if>
+      <if test="musicSize != null">
+        music_size = #{musicSize,jdbcType=BIGINT},
+      </if>
+      <if test="duration != null">
+        duration = #{duration,jdbcType=VARCHAR},
+      </if>
+      <if test="isHeart != null">
+        is_heart = #{isHeart,jdbcType=INTEGER},
+      </if>
+      <if test="artist != null">
+        artist = #{artist,jdbcType=VARCHAR},
+      </if>
+      <if test="uploadTime != null">
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="downloadTimes != null">
+        download_times = #{downloadTimes,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.kaifamiao.music.domain.Music">
+    <!--@mbg.generated-->
+    update music
+    set old_name = #{oldName,jdbcType=VARCHAR},
+      music_type = #{musicType,jdbcType=VARCHAR},
+      upload_path = #{uploadPath,jdbcType=VARCHAR},
+      new_name = #{newName,jdbcType=VARCHAR},
+      music_suffix = #{musicSuffix,jdbcType=VARCHAR},
+      music_size = #{musicSize,jdbcType=BIGINT},
+      duration = #{duration,jdbcType=VARCHAR},
+      is_heart = #{isHeart,jdbcType=INTEGER},
+      artist = #{artist,jdbcType=VARCHAR},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      download_times = #{downloadTimes,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectMusicAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from music
+    where user_id = #{userId}
+  </select>
+
+  <select id="selectByIsHeart" resultMap="BaseResultMap">
+    select
+    *
+    from music
+    where is_heart = 0 and user_id = #{userId}
+  </select>
+
+  <select id="selectArtist" resultMap="BaseResultMap">
+    select artist
+    from music
+    where user_id = #{userId}
+  </select>
+
+</mapper>

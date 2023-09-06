@@ -1,0 +1,25 @@
+server:
+  port: 8001
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://121.4.93.149:3306/music?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
+    username: music
+    password: music
+  servlet:
+    multipart:
+      #      服务器端文件大小的限制
+      max-file-size: 20MB
+      #      客户端文件大小的限制
+      max-request-size: 20MB
+
+mybatis:
+  mapper-locations: mapperxml/*.xml
+#上传路径
+music:
+#  本地路径
+#  uploadfile: D:/music/file/
+#  服务器路径
+  uploadfile: /music/upload/
+
